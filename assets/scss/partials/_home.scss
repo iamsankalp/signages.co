@@ -3,7 +3,7 @@ html {
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  tap-highlight-color: rgba(0, 0, 0, .1);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, .1);
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
 }
