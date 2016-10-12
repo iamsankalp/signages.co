@@ -1,0 +1,38 @@
+html {
+  font-family: -apple-system, 'Helvetica Neue', 'Arial', sans-serif;
+  font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  tap-highlight-color: rgba(0, 0, 0, .1);
+  text-rendering: optimizeLegibility;
+  text-size-adjust: 100%;
+}
+
+.fira {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.m-t-0 {
+  margin-top: 0;
+}
+
+.m-r-0 {
+  margin-right: 0;
+}
+
+.m-b-0 {
+  margin-bottom: 0;
+}
+
+.m-l-0 {
+  margin-left: 0;
+}
+
+.page-header {
+  background-color: $primary-color;
+  padding: 2em;
+}
+
+.signages-list {
+  list-style: none;
+}
