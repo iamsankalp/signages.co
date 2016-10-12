@@ -223,4 +223,5 @@ pip-log.txt
 /.ftpconfig
 config.codekit
 
+**/.sass-cache
 *.scssc
