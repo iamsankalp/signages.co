@@ -423,10 +423,12 @@ template {
     max-width: 100%;
     width: 100%;
     height: auto; }
+  .signages-list .listing-image {
+    background-color: white; }
   .signages-list .listing-title {
     font-size: 1.563rem;
     margin-bottom: 0;
-    margin-top: 0.5rem; }
+    margin-top: 0.75rem; }
   .signages-list .listing-desc {
     margin-top: 0.5rem;
     font-size: 0.8em;
@@ -467,7 +469,7 @@ template {
     margin-top: 2rem; }
 
   .signages-list li {
-    margin-bottom: 3rem; }
+    margin-bottom: 2rem; }
 
   .listing-download {
     -webkit-transition: opacity 0.25s ease-in-out;
@@ -486,6 +488,9 @@ html {
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%; }
+
+body {
+  background-color: #f1f1f1; }
 
 .fira {
   font-family: 'Fira Sans', sans-serif; }
