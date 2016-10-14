@@ -494,9 +494,28 @@ html {
 .m-l-0 {
   margin-left: 0; }
 
-.page-header {
-  background-color: #ffcb06;
-  padding: 2em; }
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }
 
 .signages-list {
   list-style: none; }
+
+.page-header {
+  background-color: #ffcb06;
+  padding: 2em; }
+  .page-header small {
+    display: block;
+    font-size: .8rem;
+    font-weight: normal;
+    margin-top: .2em; }
+
+.page-footer {
+  background-color: #2b2b2b;
+  padding: .5em 2em;
+  color: #ffffff; }
+  .page-footer h6 {
+    margin: 0;
+    font-weight: normal; }

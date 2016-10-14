@@ -28,9 +28,12 @@ html {
   margin-left: 0;
 }
 
-.page-header {
-  background-color: $primary-color;
-  padding: 2em;
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
 }
 
 .signages-list {
