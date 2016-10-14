@@ -1,0 +1,45 @@
+.modal {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 999;
+  background-color: rgba($black, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+
+  &:target{
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .modal-content {
+    position: relative;
+    z-index: 1000;
+    background-color: $white;
+    border-radius: .5rem;
+    padding: 1em;
+    margin: 1em;
+
+    @media only screen and (min-width: 768px){
+      max-width: 600px;
+    }
+  }
+
+  .close{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    &:target{
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
