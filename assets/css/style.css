@@ -1,4 +1,14 @@
+@charset "UTF-8";
 /*! Signages.co | From the makers of Cleartrip */
+.container {
+  padding: 0 1.5rem; }
+
+@media only screen and (min-width: 1280px) {
+  .container {
+    padding: 0 2rem; } }
+.no-space {
+  margin: 0 !important; }
+
 /*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 /**
  * 1. Change the default font family in all browsers (opinionated).
@@ -61,7 +71,7 @@ main {
  * Add the correct margin in IE 8.
  */
 figure {
-  margin: 1em 40px; }
+  margin: 0; }
 
 /**
  * 1. Add the correct box sizing in Firefox.
@@ -403,16 +413,71 @@ template {
 [hidden] {
   display: none; }
 
+.signages-list {
+  margin: 0;
+  margin-top: 1.5rem;
+  padding: 0; }
+  .signages-list .listing {
+    margin-bottom: 2rem; }
+  .signages-list img {
+    max-width: 100%;
+    width: 100%;
+    height: auto; }
+  .signages-list .listing-title {
+    font-size: 1.563rem;
+    margin-bottom: 0;
+    margin-top: 0.5rem; }
+  .signages-list .listing-desc {
+    margin-top: 0.5rem;
+    font-size: 0.8em;
+    font-weight: 400;
+    margin-bottom: 1.25em; }
+  .signages-list .listing-download {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    color: #36c;
+    color: #36c;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 5px 7px; }
+    .signages-list .listing-download:after {
+      content: ' ↓'; }
+    .signages-list .listing-download:hover {
+      background-color: rgba(0, 0, 0, 0.05); }
+
+@media only screen and (min-width: 768px) {
+  .signages-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    .signages-list li {
+      width: 48%; } }
+@media only screen and (min-width: 1024px) {
+  .signages-list li {
+    width: 31.5%; } }
+@media only screen and (min-width: 1280px) {
+  .signages-list {
+    margin-top: 2rem; }
+
+  .signages-list li {
+    margin-bottom: 3rem; }
+
+  .listing-download {
+    transition: opacity 0.25s ease-in-out;
+    opacity: 0; }
+
+  .signages-list li:hover .listing-download {
+    opacity: 1; } }
 html {
-  font-family: -apple-system, 'Helvetica Neue', 'Arial', sans-serif;
+  font-family: -apple-system, 'BlinkMacSystemFont', 'Helvetica Neue', 'Arial', sans-serif;
   font-size: 16px;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
   text-rendering: optimizeLegibility;
-  -webkit-text-size-adjust: 100%;
-      -ms-text-size-adjust: 100%;
-          text-size-adjust: 100%; }
+  text-size-adjust: 100%; }
 
 .fira {
   font-family: 'Fira Sans', sans-serif; }
