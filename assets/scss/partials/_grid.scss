@@ -10,10 +10,13 @@
 		width: 100%;
 		height: auto;
 	}
+	.listing-image {
+		background-color: white;
+	}
 	.listing-title {
 		font-size: 1.563rem;
 		margin-bottom: 0;
-		margin-top: 0.5rem;
+		margin-top: 0.75rem;
 	}
 	.listing-desc {
 		margin-top: 0.5rem;
@@ -56,7 +59,7 @@
 @media only screen and (min-width: 1280px) {
 	.signages-list { margin-top: 2rem; }
 	.signages-list li {
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 	}
 	.listing-download { 
 		transition: opacity 0.25s ease-in-out;
