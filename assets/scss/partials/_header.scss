@@ -9,4 +9,16 @@
     font-weight: normal;
     margin-top: .2em;
   }
+
+  svg{
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-top: 1em;
+    opacity: .5;
+    transition: opacity .3s ease-in;
+  }
+
+  svg:hover{
+    opacity: 1;
+  }
 }
