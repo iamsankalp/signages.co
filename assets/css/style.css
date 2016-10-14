@@ -648,6 +648,9 @@ body {
   text-align: center; }
   .makers .who h4 {
     font-weight: lighter; }
+    .makers .who h4 img {
+      max-width: 100px;
+      vertical-align: middle; }
   .makers .who ul {
     display: -webkit-box;
     display: -ms-flexbox;
