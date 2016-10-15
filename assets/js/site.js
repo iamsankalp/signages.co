@@ -7,8 +7,7 @@ Array.prototype.forEach.call(signages, function(signage, i){
 	var title = signage.querySelectorAll('.listing-title')[0].innerHTML;
 	var lang = signage.dataset.lang;
 
-	var langCode = null;
-	
+	var langCode = null;	
 
 	switch(lang) {
     case "en":
@@ -26,8 +25,13 @@ Array.prototype.forEach.call(signages, function(signage, i){
 
 	downloadBtn.onclick = function(event){
 		event.preventDefault();
-		// console.log('send', 'event', 'Signage', 'Download', title, langCode)
 		ga('send', 'event', 'Signage', 'Download', title, langCode);
 	};
 	
 });
+
+
+var makersModal = document.getElementById("makersModal");
+makersModal.onclick = function (event) {
+	ga('send', 'event', 'About', 'click', 'Makers Modal');
+}
