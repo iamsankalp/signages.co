@@ -225,5 +225,3 @@ config.codekit
 
 **/.sass-cache
 *.scssc
-
-assets/css/style.css
