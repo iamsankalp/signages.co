@@ -1,3 +1,12 @@
+/**
+ * Tracking Events for signages.co
+ *
+ * Lang Codes for reference:-
+ *  English = en = 1
+ *  Hindi = hi = 2
+ *  Gujrati = gu = 3
+ */
+
 var signages = document.querySelectorAll('.listing');
 
 Array.prototype.forEach.call(signages, function(signage, i){
@@ -25,6 +34,7 @@ Array.prototype.forEach.call(signages, function(signage, i){
 
 	downloadBtn.onclick = function(event){
 		event.preventDefault();
+		// console.log('send', 'event', 'Signage', 'Download', title, langCode);
 		ga('send', 'event', 'Signage', 'Download', title, langCode);
 	};
 	
