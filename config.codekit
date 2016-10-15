@@ -15,7 +15,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 2032,
+		"initialSize": 1637,
 		"inputAbbreviatedPath": "\/assets\/images\/favicon.png",
 		"outputAbbreviatedPath": "\/assets\/images\/favicon.png",
 		"outputPathIsOutsideProject": 0,
@@ -26,7 +26,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 2815,
+		"initialSize": 2268,
 		"inputAbbreviatedPath": "\/assets\/images\/img_cleartrip.png",
 		"outputAbbreviatedPath": "\/assets\/images\/img_cleartrip.png",
 		"outputPathIsOutsideProject": 0,
@@ -37,7 +37,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 131365,
+		"initialSize": 120597,
 		"inputAbbreviatedPath": "\/assets\/images\/img_social.jpg",
 		"outputAbbreviatedPath": "\/assets\/images\/img_social.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -634,7 +634,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Sankalp Agrawal",
+"lastSavedByUser": "Indrashish Ghosh",
 "manualImportLinks": {
 	},
 "projectAttributes": {
