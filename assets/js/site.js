@@ -29,6 +29,9 @@ Array.prototype.forEach.call(signages, function(signage){
     case "gu":
         langCode = 3;
         break;
+    case "mr":
+        langCode = 4;
+        break;
     default:
         langCode = 1;
 	}
