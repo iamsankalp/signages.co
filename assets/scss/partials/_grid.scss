@@ -1,6 +1,5 @@
 .signages-list {
 	margin: 0;
-	margin-top: 1.5rem;
 	padding: 0;
 	.listing { 
 		margin-bottom: 2rem; 
@@ -34,9 +33,11 @@
     	border: 1px solid;
     	border-radius: 2px;
     	padding: 5px 7px;
-		&:after { content: ' ↓'}
+		background-color: transparent;
+		transition: all 0.25s ease-in-out;
+		&:after { content: ' ↓'; }
 		&:hover {
-			background-color: rgba(0,0,0,0.05);
+			background-color: rgba($link-color, .1);
 		}
 	}
 }
@@ -57,12 +58,10 @@
 	.signages-list li { width: 31.5%; }
 }
 @media only screen and (min-width: 1280px) {
-	.signages-list { margin-top: 2rem; }
-	.signages-list li {
-		margin-bottom: 2rem;
+	.signages-list li article {
+		margin-bottom: 1rem;
 	}
 	.listing-download { 
-		transition: opacity 0.25s ease-in-out;
 		opacity: 0;
 	}
 	.signages-list li:hover .listing-download {
