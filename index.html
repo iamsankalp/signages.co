@@ -139,9 +139,15 @@ With love, from the makers of Cleartrip
   </header>
 
   <section class="container">
-    <ul class="signages-list">
+	<ul class="filters">
+		<li><button class="active btn" data-group="all">All</button></li>
+		<li><button class="btn" data-group="en">English</button></li>
+		<li><button class="btn" data-group="hi">Hindi</button></li>
+		<li><button class="btn" data-group="gu">Gujrati</button></li>
+	</ul>
+    <ul class="signages-list" id="grid">
       <li>
-        <article class="listing" data-lang="en">
+        <article class="listing eng" data-lang="en">
           <figure class="listing-image">
             <img src="source-files/English/Do not spit here.png" alt="Do not spit here" />
           </figure>
@@ -153,7 +159,7 @@ With love, from the makers of Cleartrip
         </article>
       </li>
       <li>
-        <article class="listing" data-lang="en">
+        <article class="listing hin" data-lang="en">
           <figure class="listing-image">
             <img src="source-files/English/Beware of dog.png" alt="Beware of dog" />
           </figure>
@@ -598,6 +604,7 @@ With love, from the makers of Cleartrip
     </div>
   </div>
 
+  <script src="assets/js/jquery.js"></script>
   <script src="assets/js/min/site-min.js"></script>
 
 </body>
