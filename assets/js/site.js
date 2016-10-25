@@ -7,7 +7,6 @@
  *  Gujrati = gu = 3
  */
 
-
 var signages = document.querySelectorAll('.listing');
 
 Array.prototype.forEach.call(signages, function(signage){
@@ -33,17 +32,18 @@ Array.prototype.forEach.call(signages, function(signage){
         langCode = 1;
 	}
 
-	downloadBtn.onclick = function(){
-		ga('send', 'event', 'Signage', 'Download', title, langCode);
+	downloadBtn.onclick = function(event) {
+		ga('send', 'event', 'SignageDownload', lang, title);
 	};
 
 });
 
 
-var makersModal = document.getElementById("makersModalTrigger");
-makersModal.onclick = function () {
-	ga('send', 'event', 'About', 'click', 'Makers Modal');
-};
+// Track Maker Modal Clicks
+$('#makersModalTrigger').on('click', function() {
+	ga('send', 'event', 'About', 'click', 'Makers Modal')
+})
+
 
 //Filter grids
 $('.filters .btn').click(function() {
