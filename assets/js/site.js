@@ -33,8 +33,7 @@ Array.prototype.forEach.call(signages, function(signage){
 	}
 
 	downloadBtn.onclick = function(event) {
-		event.preventDefault();
-		console.log('send', 'event', 'SignageDownload', lang, title);
+		ga('send', 'event', 'SignageDownload', lang, title);
 	};
 
 });
