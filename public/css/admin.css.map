@@ -1,0 +1,1 @@
+{"version":3,"sources":["admin.scss"],"names":[],"mappings":"AAAA,WACC,gBAAkB,CAClB,AAED,QACE,eAAiB,CAClB,AACD,WACE,wBAA0B,CAC3B","file":"admin.css","sourcesContent":[".container {\n\tmax-width: 1000px;\n}\n\n.navbar {\n  border-radius: 0;\n}\n.bg-yellow {\n  background-color: #ffcb06;\n}"]}
