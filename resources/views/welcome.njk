@@ -1,20 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Signages.co</title>
-</head>
-<body>
+{% extends 'master' %}
 
-<h1>Signages</h1>
+{% block content %}
 
-<ul>
-	<li>
-		<a href="/login">
-			Login
-		</a>
-	</li>
-</ul>
-	
-</body>
-</html>
+
+{% include 'partials.navbar' %}
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 push-sm-3">
+
+			{% if not currentUser %}
+				<h1>Welcome guest</h1>
+			  <small>You're not logged in!</small>
+			{% else %}
+				<h1>Welcome {{currentUser.email}}</h1>
+				<small>Whats happening amigo?</small>
+			{% endif %}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

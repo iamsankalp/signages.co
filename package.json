@@ -19,6 +19,8 @@
     "adonis-framework": "^3.0.3",
     "adonis-lucid": "^3.0.9",
     "adonis-middleware": "^1.0.8",
+    "adonis-validation-provider": "^3.0.4",
+    "sqlite3": "^3.1.7",
     "standard": "^8.4.0",
     "youch": "^1.0.1"
   },

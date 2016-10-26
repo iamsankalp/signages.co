@@ -19,4 +19,14 @@ const Route = use('Route')
 
 Route.on('/').render('welcome')
 
+// Authentication Routes
 Route.get('/login', 'AuthController.showLogin')
+Route.post('/login', 'AuthController.doLogin')
+
+Route.get('/register', 'AuthController.showSignup')
+Route.post('/register', 'AuthController.doSignup')
+
+Route.get('/logout', 'AuthController.doLogout')
+
+// Backdoor Routes
+Route.get('/backdoor', 'PagesController.backdoor')
