@@ -6,6 +6,9 @@ import gulp from 'gulp';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber from 'gulp-plumber';
 import newer from 'gulp-newer';
+import named from 'vinyl-named';
+import rename from 'gulp-rename';
+import notify from 'gulp-notify';
 
 // Styles ------------------------------
 import sass from 'gulp-sass';
@@ -16,11 +19,35 @@ import vmin from 'postcss-vmin';
 import mqpacker from 'css-mqpacker';
 import cssnano from 'cssnano';
 
+// Scripts -----------------------------
+import webpackStream from 'webpack-stream';
+
+// Images ------------------------------
+import imagemin from 'gulp-imagemin';
+import pngquant from 'imagemin-pngquant';
+
+// SVG ---------------------------------
+import svgmin from 'gulp-svgmin';
+import svgstore from 'gulp-svgstore';
+import cheerio from 'gulp-cheerio';
+
 const config = {
   styles: {
     src: './resources/scss/',
     dist: './public/css/'
-  }
+  },
+  scripts: {
+    src: './resources/js/',
+    dist: './public/js/'
+  },
+  images: {
+    src: './resources/images/',
+    dist: './public/images/'
+  },
+  svg: {
+    src: './resources/svg/',
+    dist: './resources/views/partials/'
+  },
 };
 
 
@@ -49,65 +76,43 @@ gulp.task('styles', () => {
 
 
 
-gulp.task('scripts', () => {
 
-  const processors = [
-    willChange(),
-    vmin(),
-    mqpacker(),
-    cssnano(),
-    autoprefixer({ browsers: ['ie >= 10', 'ie_mob >= 10', 'ff >= 30', 'chrome >= 34', 'safari >= 7', 'opera >= 23', 'ios >= 7', 'android >= 4.4', 'bb >= 10'] })
-  ];
+gulp.task('scripts', function() {
+  return gulp.src('./resources/js/*.js')
+  .pipe( named() )
+  .pipe( plumber({errorHandler: notify.onError('Error: <%= error.message %>')}) )
+  .pipe( webpackStream( require('./webpack.dev.js') ))
+  .on( 'error', notify.onError({ message: 'Error: <%= error.message %>'}) )
+  .pipe( gulp.dest('./public/js/') )
+  .pipe( notify({ message: 'Scripts task complete' }) );
+})
 
-  return gulp.src([
-    `${config.styles.src}**/*.scss`,
-    '!**/_*/**' // Ignores Sass partials to `gulp.src` for best performance
-  ])
-  .pipe( plumber() )
-  .pipe( sourcemaps.init() )
-  .pipe( newer(config.styles.dist) )
-  .pipe( sass() )
-  .pipe( postcss(processors) )
-  .pipe( sourcemaps.write('./') )
-  .pipe( gulp.dest(config.styles.dist) )
+
+
+gulp.task('images', function() {
+  return gulp.src(config.images.src+'**/*.*')
+  .pipe( newer(config.images.dist) )
+  .pipe( plumber({errorHandler: notify.onError('Error: <%= error.message %>')}) )
+  .pipe( imagemin({
+      progressive: true,
+      use: [pngquant()]
+  }) )
+  .pipe( gulp.dest(config.images.dist) )
 });
 
 
-
-gulp.task('scripts', () => {
-  glob('*.js', {cwd: config.scripts.src}, (err, files) => {
-    
-    if (err) {
-      errorHandler(err);
-    }
-
-    const tasks = files.map(entry => {
-      const b = browserify({
-        entries: [entry],
-        extensions: ['.js'],
-        debug: true,
-        cache: {},
-        packageCache: {},
-        basedir: config.scripts.src,
-        transform: ['babelify']
-      })
-
-      const bundle = () => {
-        return b.bundle()
-          .on( 'error', errorHandler )
-          .pipe( source(entry) )
-          .pipe( buffer() )
-          .pipe( sourcemaps.init({loadMaps: true}) )
-          .pipe( uglify() )
-          .pipe( sourcemaps.write('./') )
-          .pipe( gulp.dest(config.scripts.dist) )
-      };
-
-      b.on('update', bundle);
-      return bundle();
-    });
-
-    es.merge(tasks).on('end', done);
-
-  });
+gulp.task('svg', function () {
+  return gulp.src(config.svg.src+'**/*.svg')
+    .pipe( plumber({errorHandler: notify.onError('Error: <%= error.message %>')}) )
+    .pipe( svgmin() )
+    .pipe( svgstore({ fileName: 'icons.svg', inlineSvg: true}) )
+    .pipe( cheerio({
+      run: function ($, file) {
+          $('svg').addClass('hide');
+          $('[fill]').removeAttr('fill');
+      },
+      parserOptions: { xmlMode: true }
+    }) )
+    .pipe( rename({extname: '.njk'}) )
+    .pipe( gulp.dest(config.svg.dist) )
 });

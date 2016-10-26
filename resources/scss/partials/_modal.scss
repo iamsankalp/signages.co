@@ -1,0 +1,153 @@
+.modal {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 999;
+  background-color: rgba($black, .5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, visibility;
+  transition: all .3s ease-in;
+
+  &:target{
+    visibility: visible;
+    opacity: 1;
+
+    .modal-content{
+      transform: translate(0, 0);
+    }
+  }
+
+  .modal-content {
+    position: relative;
+    z-index: 1000;
+    background-color: $white;
+    border-radius: .5rem;
+    padding: 1.5em;
+    margin: 1em;
+    overflow: hidden;
+    box-shadow: 0px 1px 6px rgba($black, .2);
+    will-change: transform;
+    transform: translate(0, -10%);
+    transition: transform 0.5s ease-in-out;
+
+    @media only screen and (min-width: 768px) {
+      max-width: 560px;
+    }
+  }
+
+  .close {
+    position: absolute;
+    right: 0;
+    top: .5rem;
+    cursor: pointer;
+    width: 3rem;
+    text-align: center;
+    font-size: 2rem;
+    line-height: 1;
+    color: $black;
+    opacity: .4;
+    text-decoration: none;
+    transition: opacity .3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:target {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
+
+.makers {
+
+  .what {
+    margin-bottom: 1.5em;
+
+    h1{
+      margin-top: .2em;
+      margin-bottom: .5em;
+    }
+
+    p {
+      line-height: 1.4;
+      font-weight: lighter;
+      margin-top: .5em;
+      margin-bottom: .5em;
+    }
+
+    small{
+      line-height: 1.4;
+      font-weight: lighter;
+      color: #999;
+    }
+
+    a{
+      color: $link-color;
+      text-decoration: none;
+    }
+  }
+
+  .who {
+    background-color: $primary-color;
+    margin: 0 -1.5em -1.5em;
+    padding: .5em 1.5em 1.5em;
+    text-align: center;
+
+    h4{
+      font-weight: lighter;
+
+      img{
+        max-width: 100px;
+        vertical-align: middle;
+      }
+    }
+
+    ul{
+      display: flex;
+      align-content: space-between;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+
+      li{
+        text-align: center;
+        flex: 1;
+      }
+
+      figure{
+        border-radius: 50%;
+        overflow: hidden;
+        width: 2rem;
+        height: 2rem;
+        display: inline-block;
+
+        img{
+          max-width: 100%;
+          height: auto;
+        }
+
+        @media only screen and (min-width: 768px) {
+          width: 5rem;
+          height: 5rem;
+        }
+      }
+
+      figcaption{
+        display: none;
+        font-size: .8rem;
+        font-weight: light;
+        color: $black;
+
+        @media only screen and (min-width: 768px) {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

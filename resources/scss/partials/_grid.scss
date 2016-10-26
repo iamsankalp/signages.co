@@ -1,0 +1,70 @@
+.signages-list {
+	margin: 0;
+	padding: 0;
+	.listing { 
+		margin-bottom: 2rem; 
+	}
+	img {
+		max-width: 100%;
+		width: 100%;
+		height: auto;
+	}
+	.listing-image {
+		background-color: white;
+	}
+	.listing-title {
+		font-size: 1.563rem;
+		margin-bottom: 0;
+		margin-top: 0.75rem;
+	}
+	.listing-desc {
+		margin-top: 0.5rem;
+		font-size: 0.8em;
+		font-weight: 400;
+		margin-bottom: 1.25em;
+	}
+	.listing-download {
+		font-size: 0.8em;
+		text-transform: uppercase;
+		text-decoration: none;
+		font-weight: 600;
+		color: #36c;
+		color: #36c;
+    	border: 1px solid;
+    	border-radius: 2px;
+    	padding: 5px 7px;
+		background-color: transparent;
+		transition: all 0.25s ease-in-out;
+		&:after { content: ' ↓'; }
+		&:hover {
+			background-color: rgba($link-color, .1);
+		}
+	}
+}
+
+// Responsiveness
+
+@media only screen and (min-width: 768px) {
+	.signages-list { 
+		display: flex; 
+		flex-wrap: wrap;
+		justify-content: space-between;
+		li {
+			width: 48%;
+		}
+	}
+}
+@media only screen and (min-width: 1024px) {
+	.signages-list li { width: 31.5%; }
+}
+@media only screen and (min-width: 1280px) {
+	.signages-list li article {
+		margin-bottom: 1rem;
+	}
+	.listing-download { 
+		opacity: 0;
+	}
+	.signages-list li:hover .listing-download {
+		opacity: 1;
+	}
+}

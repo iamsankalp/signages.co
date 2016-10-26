@@ -1,25 +1,618 @@
-{% extends 'master' %}
 
-{% block content %}
+<!DOCTYPE html>
 
+<!--
+      _
+ ___ (_)  __ _  _ __    __ _   __ _   ___  ___
+/ __|| | / _` || '_ \  / _` | / _` | / _ \/ __|
+\__ \| || (_| || | | || (_| || (_| ||  __/\__ \
+|___/|_| \__, ||_| |_| \__,_| \__, | \___||___/
+         |___/                |___/
 
-{% include 'partials.navbar' %}
+With love, from the makers of Cleartrip
 
+-->
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 push-sm-3">
+<html lang="en">
 
-			{% if not currentUser %}
-				<h1>Welcome guest</h1>
-			  <small>You're not logged in!</small>
-			{% else %}
-				<h1>Welcome {{currentUser.email}}</h1>
-				<small>Whats happening amigo?</small>
-			{% endif %}
+<head>
+
+  <!-- Title
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <title>Signages | For a delightful neighbourhood</title>
+
+  <!-- Important metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Basic metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="description" content="Download free print ready signages &amp; posters like no parking, lift maintenance and such... &amp; make your neighbourhoods delightful.">
+  <meta name="author" content="">
+
+  <!-- Social metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Signages.co">
+  <meta property="og:url" content="http://signages.co">
+  <meta property="og:title" content="Signages.co | For a delightful neighbourhood">
+  <meta property="og:description" content="A well designed signage communicates what it's supposed to, and also makes people sensitive about design. Our mission is to make a delightful neighbourhood.">
+  <meta property="og:image" content="/images/img_social.jpg">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@thesignages">
+  <meta name="twitter:title" content="Signages.co | For a delightful neighbourhood">
+  <meta name="twitter:description" content="A well designed signage communicates what it's supposed to, and also makes people sensitive about design. Our mission is to make a delightful neighbourhood.">
+  <meta name="twitter:image" content="/images/img_social.jpg">
+  <meta name="twitter:image:width" content="1200">
+  <meta name="twitter:image:height" content="630">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,700&text=Singages" rel="stylesheet">
+
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="/css/site.css">
+
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Scripts in Head - are you seriou?
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-85690072-1', 'auto');
+	  ga('send', 'pageview');
+
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:310508,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+	</script>
+
+</head>
+
+<body>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+
+      <symbol id="cc" viewBox="0 0 24 24">
+        <title>Creative Commons</title>
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M574.515506,793.480148 C576.83838,795.799637 578,798.640261 578,801.999817 C578,805.360105 576.858514,808.170216 574.575541,810.430124 C572.152765,812.810299 569.289329,814 565.985271,814 C562.721121,814 559.907276,812.819968 557.544515,810.459938 C555.181387,808.100234 554,805.280453 554,801.999817 C554,798.719913 555.181387,795.880028 557.544515,793.480148 C559.847255,791.159927 562.661087,790 565.985271,790 C569.349743,789.999993 572.192673,791.159921 574.515506,793.480148 L574.515506,793.480148 Z M559.108381,795.040605 C557.144521,797.021342 556.162957,799.341563 556.162957,802.003138 C556.162957,804.663981 557.134837,806.964503 559.078198,808.904666 C561.021918,810.845553 563.335847,811.815638 566.020707,811.815638 C568.705566,811.815638 571.039223,810.835891 573.022851,808.875258 C574.90621,807.054191 575.848252,804.764516 575.848252,802.003138 C575.848252,799.262643 574.890914,796.936492 572.977372,795.025738 C571.064195,793.115349 568.745434,792.159772 566.020707,792.159772 C563.295967,792.159779 560.991374,793.120187 559.108381,795.040605 L559.108381,795.040605 Z M564.276411,800.832449 C563.976312,800.179149 563.527114,799.852296 562.928023,799.852296 C561.86891,799.852296 561.339557,800.564412 561.339557,801.987911 C561.339557,803.411737 561.86891,804.123121 562.928023,804.123121 C563.627389,804.123121 564.126924,803.776569 564.426656,803.081963 L565.8947,803.862557 C565.194967,805.104006 564.145192,805.724891 562.745367,805.724891 C561.665774,805.724891 560.800894,805.394344 560.151479,804.733976 C559.500951,804.072877 559.176626,803.161614 559.176626,801.999817 C559.176626,800.85849 559.511381,799.952425 560.181296,799.281296 C560.851211,798.610128 561.685501,798.274703 562.685713,798.274703 C564.165326,798.274703 565.224785,798.856923 565.865249,800.020178 L564.276411,800.832449 L564.276411,800.832449 Z M571.183144,800.832449 C570.882659,800.179149 570.442412,799.852296 569.861948,799.852296 C568.781602,799.852296 568.241039,800.564412 568.241039,801.987911 C568.241039,803.411737 568.781602,804.123121 569.861948,804.123121 C570.562454,804.123121 571.053019,803.776569 571.333004,803.081963 L572.83387,803.862557 C572.135237,805.104006 571.086941,805.724891 569.689722,805.724891 C568.611609,805.724891 567.748602,805.394344 567.09956,804.733976 C566.451651,804.072877 566.126967,803.161614 566.126967,801.999817 C566.126967,800.85849 566.456496,799.952425 567.115221,799.281296 C567.77358,798.610128 568.611616,798.274703 569.630095,798.274703 C571.107088,798.274703 572.165061,798.856923 572.803287,800.020178 L571.183144,800.832449 L571.183144,800.832449 Z" transform="translate(-554 -790)"/>
+      </symbol>
+
+      <symbol id="ccCredit" viewBox="0 0 24 24">
+        <title>Creative Commons</title>
+        <desc>Credit required for redistribution</desc>
+        <path fill="#FFFFFF" fill-rule="evenodd" d="M596.240032,790.385661 C593.02774,790.385661 590.30845,791.506451 588.083134,793.748031 C585.799594,796.066759 584.658305,798.811473 584.658305,801.980255 C584.658305,805.149038 585.799594,807.874346 588.083134,810.154738 C590.366675,812.434643 593.085966,813.57484 596.240032,813.57484 C599.432914,813.57484 602.200731,812.425909 604.541533,810.125624 C606.74744,807.942263 607.850875,805.22714 607.850875,801.980246 C607.850875,798.733351 606.728031,795.9896 604.484271,793.748021 C602.238573,791.506451 599.491139,790.385661 596.240032,790.385661 Z M596.269139,792.47198 C598.901087,792.47198 601.136102,793.400147 602.974194,795.255517 C604.831694,797.090994 605.760445,799.332573 605.760445,801.980255 C605.760445,804.646857 604.851103,806.859809 603.032419,808.618147 C601.115719,810.51233 598.86226,811.458939 596.269139,811.458939 C593.675044,811.458939 591.44002,810.522038 589.564085,808.647262 C587.686202,806.772485 586.748716,804.550312 586.748716,801.980265 C586.748716,799.409732 587.696875,797.168629 589.593192,795.255527 C591.411886,793.400147 593.637192,792.47198 596.269139,792.47198 Z M596.25458,797.73677 C597.150741,797.73677 597.877223,797.010364 597.877223,796.114296 C597.877223,795.218229 597.150741,794.491823 596.25458,794.491823 C595.35842,794.491823 594.631938,795.218229 594.631938,796.114296 C594.631938,797.010364 595.35842,797.73677 596.25458,797.73677 Z M599.374679,799.109862 C599.374679,798.695999 599.038893,798.360725 598.626438,798.360725 L593.882723,798.360725 C593.470268,798.360725 593.134482,798.695989 593.134482,799.109862 L593.134482,803.852597 L594.457243,803.852597 L594.457243,809.468679 L598.051908,809.468679 L598.051908,803.852597 L599.374669,803.852597 L599.374669,799.109862 L599.374679,799.109862 Z" transform="translate(-584 -790)"/>
+      </symbol>
+
+      <symbol id="info" viewBox="0 0 24 24">
+        <title>Info</title>
+        <path fill="#000000" fill-rule="evenodd" d="M792,702 C792,695.372583 797.372583,690 804,690 C810.627417,690 816,695.372583 816,702 C816,708.627417 810.627417,714 804,714 C797.372583,714 792,708.627417 792,702 Z M815,702 C815,695.924868 810.075132,691 804,691 C797.924868,691 793,695.924868 793,702 C793,708.075132 797.924868,713 804,713 C810.075132,713 815,708.075132 815,702 Z M802.068182,699.272727 L802.068182,699.818182 L803.159091,699.818182 L803.159091,708 L802.068182,708 L802.068182,708.545455 L806.431818,708.545455 L806.431818,708 L805.340909,708 L805.340909,699.272727 L802.068182,699.272727 Z M803.977273,697.636364 C804.730388,697.636364 805.340909,697.025843 805.340909,696.272727 C805.340909,695.519612 804.730388,694.909091 803.977273,694.909091 C803.224157,694.909091 802.613636,695.519612 802.613636,696.272727 C802.613636,697.025843 803.224157,697.636364 803.977273,697.636364 Z" transform="translate(-792 -690)"/>
+      </symbol>
+
+      <symbol id="close" viewBox="0 0 24 24">
+        <title>Close</title>
+        <path fill="#000000" fill-rule="evenodd" d="M12.4142136,24.9289322 C19.0416306,24.9289322 24.4142136,19.5563492 24.4142136,12.9289322 C24.4142136,6.30151519 19.0416306,0.928932188 12.4142136,0.928932188 C5.78679656,0.928932188 0.414213562,6.30151519 0.414213562,12.9289322 C0.414213562,19.5563492 5.78679656,24.9289322 12.4142136,24.9289322 Z M12.4142136,23.8380231 C18.4391381,23.8380231 23.3233045,18.9538567 23.3233045,12.9289322 C23.3233045,6.90400764 18.4391381,2.01984128 12.4142136,2.01984128 C6.38928902,2.01984128 1.50512265,6.90400764 1.50512265,12.9289322 C1.50512265,18.9538567 6.38928902,23.8380231 12.4142136,23.8380231 Z M11.868759,12.3834776 L11.868759,6.92893219 L12.9596681,6.92893219 L12.9596681,12.3834776 L18.4142136,12.3834776 L18.4142136,13.4743867 L12.9596681,13.4743867 L12.9596681,18.9289322 L11.868759,18.9289322 L11.868759,13.4743867 L6.41421356,13.4743867 L6.41421356,12.3834776 L11.868759,12.3834776 Z" transform="rotate(45 12.977 12.51)"/>
+      </symbol>
+
+      <symbol id="twitter" viewBox="0 0 24 24">
+        <title>Twitter</title>
+        <desc>Follow us on Twitter</desc>
+        <path fill="#000000" fill-rule="evenodd" d="M752,702 C752,695.372583 757.372583,690 764,690 C770.627417,690 776,695.372583 776,702 C776,708.627417 770.627417,714 764,714 C757.372583,714 752,708.627417 752,702 Z M775,702 C775,695.924868 770.075132,691 764,691 C757.924868,691 753,695.924868 753,702 C753,708.075132 757.924868,713 764,713 C770.075132,713 775,708.075132 775,702 Z M768.510703,697.843047 C767.982732,697.281012 767.327035,697 766.543594,697 C765.811246,697 765.181096,697.263982 764.653125,697.791953 C764.125154,698.319924 763.861172,698.950074 763.861172,699.682422 C763.861172,699.886798 763.886719,700.09117 763.937812,700.295547 C762.847807,700.244453 761.821684,699.971956 760.859413,699.478047 C759.897144,698.984138 759.08391,698.319926 758.419687,697.485391 C758.164217,697.894142 758.036484,698.345466 758.036484,698.839375 C758.036484,699.793129 758.436715,700.533982 759.237187,701.061953 C758.811404,701.061953 758.411174,700.951251 758.036484,700.729844 L758.036484,700.780937 C758.036484,701.411098 758.2366,701.973122 758.636836,702.467031 C759.037072,702.96094 759.552262,703.276014 760.182422,703.412266 C759.943983,703.463359 759.705548,703.488906 759.467109,703.488906 C759.296796,703.488906 759.126485,703.471874 758.956172,703.437812 C759.143517,703.982815 759.462849,704.429881 759.91418,704.779023 C760.365511,705.128165 760.880701,705.302734 761.459766,705.302734 C760.488979,706.069144 759.381959,706.452344 758.138672,706.452344 C757.934296,706.452344 757.721407,706.443828 757.5,706.426797 C758.760319,707.22727 760.13132,707.6275 761.613047,707.6275 C762.80524,707.6275 763.895229,707.39758 764.883047,706.937734 C765.870865,706.477888 766.675582,705.877543 767.297226,705.136679 C767.918871,704.395816 768.399999,703.578324 768.740625,702.684179 C769.081251,701.790035 769.251562,700.891645 769.251562,699.988984 L769.251562,699.656875 C769.779533,699.265154 770.222342,698.7968 770.58,698.251797 C770.086091,698.473204 769.575158,698.617968 769.047187,698.686094 C769.626252,698.328436 770.017967,697.834535 770.222344,697.204375 C769.694373,697.510939 769.123831,697.723828 768.510703,697.843047 Z" transform="translate(-752 -690)"/>
+      </symbol>
+
+    </defs>
+  </svg>
+
+  <header class="page-header">
+      <h1 class="fira pull-left m-t-0 m-b-0">
+        Signages
+        <small class="fira">For a delightful neighbourhood</small>
+      </h1>
+
+      <a href="#makersModal" class="pull-right" id="makersModalTrigger">
+        <svg>
+          <use xlink:href="#info" />
+        </svg>
+      </a>
+
+      <a href="/request" class="header-link pull-right">
+				Request
+      </a>
+
+      <a href="/submit" class="header-link pull-right">
+				Submit
+      </a>
+
+      <a href="/backdoor" class="header-link pull-right">
+				Backdoor
+      </a>
+  </header>
+
+  <section class="container">
+	<ul class="filters">
+		<li><button class="active btn" data-group="all">All</button></li>
+		<li><button class="btn" data-group="en">English</button></li>
+		<li><button class="btn" data-group="hi">Hindi</button></li>
+		<li><button class="btn" data-group="gu">Gujrati</button></li>
+	</ul>
+    <ul class="signages-list" id="grid">
+      <li>
+        <article class="listing eng" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/Do not spit here.png" alt="Do not spit here" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Do not spit here</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/Do not spit here.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing hin" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/Beware of dog.png" alt="Beware of dog" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Beware of dog</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/Beware of dog.pdf">Download</a>
+          </figcaption>
+        </article>
+        </li>
+      <li>
+        <article class="listing" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/Lift maintenance.png" alt="Lift maintenance" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Lift Maintenance</h1>
+            <h2 class="listing-desc">Scheduled & unscheduled lift maintenance notices</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/Lift maintenance.pdf">Download</a>
+          </figcaption>
+        </article>
+        </li>
+      <li>
+        <article class="listing" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/Do not throw garbage.png" alt="Do not throw garbage" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Do not throw grabage here</h1>
+            <h2 class="listing-desc">For places in your area where people make their own dumping ground</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/Do not throw garbage.pdf">Download</a>
+          </figcaption>
+        </article>
+        </li>
+      <li>
+        <article class="listing" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/No Parking.png" alt="No Parking" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">No Parking</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/No Parking.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/Save water.png" alt="Save water" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Save water</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/Save water.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/Switch off.png" alt="Switch off" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Switch off</h1>
+            <h2 class="listing-desc">Meeting rooms, conference rooms, wedding halls & trains</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/Switch off.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/To let.png" alt="To let" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">To let</h1>
+            <h2 class="listing-desc">For those who wish to put their houses on rent</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/To let.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="en">
+          <figure class="listing-image">
+            <img src="/source-files/English/Waste.png" alt="Waste" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Waste</h1>
+            <h2 class="listing-desc">Places where garbage is collected</h2>
+            <a class="listing-download" target="_blank" href="/source-files/English/Waste.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <!-- Hindi -->
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/Do not spit here.png" alt="Do not spit here" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Do not spit here</h1>
+            <h2 class="listing-desc">Elevators, public toilets and whereever you see people spitting</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/Do not spit here.pdf">Download</a>
+          </figcaption>
+        </article>
+        </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/Beware of dog.png" alt="Beware of dog" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Beware of dog</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/Beware of dog.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/Lift maintenance.png" alt="Lift maintenance" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Lift Maintenance</h1>
+            <h2 class="listing-desc">Scheduled & unscheduled lift maintenance notices</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/Lift maintenance.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/Do not throw garbage.png" alt="Do not throw garbage" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Do not throw grabage here</h1>
+            <h2 class="listing-desc">For places in your area where people make their own dumping ground</h2>
+            <a href="#" class="listing-download">Download</a>
+            <!-- <a class="listing-download" target="_blank" href="/source-files/Hindi/Do not throw garbage.pdf">Download</a> -->
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/No Parking.png" alt="No Parking" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">No Parking</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/No Parking.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/Save water.png" alt="Save water" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Save water</h1>
+            <h2 class="listing-desc">Whereever you can water getting wasted in public places</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/Save water.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/Switch off.png" alt="Switch off" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Switch off</h1>
+            <h2 class="listing-desc">Meeting rooms, conference halls & wedding halls</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/Switch off.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/To let.png" alt="To let" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">To let</h1>
+            <h2 class="listing-desc">When you want to put your place on rent</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/To let.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="hi">
+          <figure class="listing-image">
+            <img src="/source-files/Hindi/Waste.png" alt="Waste" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Waste</h1>
+            <h2 class="listing-desc">Grabage collection places</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Hindi/Waste.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+
+      <!-- Gujarati -->
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/Do not spit here.png" alt="Do not spit here" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Do not spit here</h1>
+            <h2 class="listing-desc">Elevators, public toilets and whereever you see people spitting</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/Do not spit here.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/Beware of dog.png" alt="Beware of dog" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Beware of dog</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/Beware of dog.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/Lift maintenance.png" alt="Lift maintenance" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Lift Maintenance</h1>
+            <h2 class="listing-desc">Scheduled & unscheduled lift maintenance notices</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/Lift maintenance.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/Do not throw garbage.png" alt="Do not throw garbage" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Do not throw grabage here</h1>
+            <h2 class="listing-desc">For places in your area where people make their own dumping ground</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/Do not throw garbage.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/No Parking.png" alt="No Parking" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">No Parking</h1>
+            <h2 class="listing-desc">For your gates, compound walls & shops</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/No Parking.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/Save water.png" alt="Save water" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Save water</h1>
+            <h2 class="listing-desc">Whereever you can water getting wasted in public places</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/Save water.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/Switch off.png" alt="Switch off" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Switch off</h1>
+            <h2 class="listing-desc">Meeting rooms, conference halls & wedding halls</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/Switch off.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/To let.png" alt="To let" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">To let</h1>
+            <h2 class="listing-desc">When you want to put your place on rent</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/To let.pdf">Download</a>
+          </figcaption>
+        </article>
+        </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/Waste.png" alt="Waste" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">Waste</h1>
+            <h2 class="listing-desc">Grabage collection places</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/Waste.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/No smoking.png" alt="Waste" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">No smoking</h1>
+            <h2 class="listing-desc">Smoking prohibited areas</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/No smoking.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+        <article class="listing" data-lang="gu">
+          <figure class="listing-image">
+            <img src="/source-files/Gujarati/No photography.png" alt="Waste" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">No photography</h1>
+            <h2 class="listing-desc">Photography prohibited areas</h2>
+            <a class="listing-download" target="_blank" href="/source-files/Gujarati/No photography.pdf">Download</a>
+          </figcaption>
+        </article>
+      </li>
+      <li>
+
+      </li>
+    </ul>
+  </section>
+
+  <footer class="page-footer">
+    <h6 class="fira">
+      Signages is
+      <svg>
+        <use xlink:href="#cc" />
+      </svg>
+
+      <svg>
+        <use xlink:href="#ccCredit" />
+      </svg>
+
+      <small>| Built for a delightful neighbourhood.
+        <span class="contact">
+          Need more? <a href="mailto:nimkarkedar@gmail.com">Email us</a>
+        </span>
+      </small>
+
+    </h6>
+  </footer>
+
+  <div class="modal makers" id="makersModal">
+    <div class="modal-content">
+
+      <a href="#" class="close">
+        &times;
+      </a>
+
+      <article class="what">
+        <h1 class="fira">Signages</h1>
+        <p>
+          This product is built with a sole purpose of making well designed signages available for everyone.  A well designed signage not only communicates what it's supposed to, but also makes every individual sensitive about design. Our mission is to make a delightful neighbourhood.
+        </p>
+        <small>
+          All artwork on this website is covered under <a href="https://creativecommons.org/" target="_blank">creative commons</a> and free to use by anybody and everybody without any conditions. Lets make our neighbourhood a better designed place
+        </small>
+      </article>
+
+      <article class="who">
+        <h4>From the makers of <img src="/images/img_cleartrip.png" alt="Cleartrip"></h4>
+        <ul>
+          <li>
+            <a href="https://twitter.com/nimkarkedar" target="_blank">
+              <figure>
+                <img src="/images/pic_kedar.jpg" alt="Kedar">
+              </figure>
+              <figcaption>
+                Kedar Nimkar
+              </figcaption>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://twitter.com/HeyJaydeep" target="_blank">
+              <figure>
+                <img src="/images/pic_jaydeep.jpg" alt="Jaydeep">
+              </figure>
+              <figcaption>
+                Jaydeep Gajera
+              </figcaption>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://twitter.com/kns008" target="_blank">
+              <figure>
+                <img src="/images/pic_kamal.jpg" alt="Kamal">
+              </figure>
+              <figcaption>
+                Kamal Nayan
+              </figcaption>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://twitter.com/_ighosh" target="_blank">
+              <figure>
+                <img src="/images/pic_joy.jpg" alt="Joy">
+              </figure>
+              <figcaption>
+                Joy Ghosh
+              </figcaption>
+            </a>
+          </li>
+
+          <li>
+            <a href="https://twitter.com/sankalped" target="_blank">
+              <figure>
+                <img src="/images/pic_sankalp.jpg" alt="Sankalp">
+              </figure>
+              <figcaption>
+                Sankalp Agrawal
+              </figcaption>
+            </a>
+          </li>
+        </ul>
+      </article>
 
     </div>
   </div>
-</div>
 
-{% endblock %}
+
+  <script src="/js/site.js"></script>
+
+</body>
+
+</html>
