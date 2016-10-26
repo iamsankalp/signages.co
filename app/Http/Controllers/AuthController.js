@@ -38,7 +38,7 @@ class AuthController {
         .withAll()
         .andWith({errors: validation.messages()})
         .flash()
-      response.redirect('back')
+      return response.redirect('back')
     }
 
 
@@ -53,7 +53,7 @@ class AuthController {
         .withAll() 
         .andWith({errors: [{"field":"password","validation":"match","message":"Incorrect credentials"}]})
         .flash()
-      	response.redirect('back')
+      	return response.redirect('back')
 			}
 
 			return response.redirect('/')
