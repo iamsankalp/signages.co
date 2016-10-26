@@ -26,7 +26,18 @@ Route.post('/login', 'AuthController.doLogin')
 Route.get('/register', 'AuthController.showSignup')
 Route.post('/register', 'AuthController.doSignup')
 
-Route.get('/logout', 'AuthController.doLogout')
 
-// Backdoor Routes
-Route.get('/backdoor', 'PagesController.backdoor')
+
+Route.group('auth-routes', () => {
+
+	Route.get('/logout', 'AuthController.doLogout')
+
+	// Backdoor Routes
+	Route.get('/backdoor', 'PagesController.backdoor')
+
+	Route.get('/signages', 'SignagesController.show')
+
+}).middleware('guard')
+
+
+
