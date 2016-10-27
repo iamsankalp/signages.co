@@ -119,12 +119,10 @@ gulp.task('svg', function () {
 
 
 gulp.task('watch', function() {
-
   gulp.watch(`${config.svg.src}**/*`, gulp.series('svg'));
   gulp.watch(`${config.images.src}**/*`, gulp.series('images'));
   gulp.watch(`${config.styles.src}**/*.scss`, gulp.series('styles'));
   gulp.watch(`${config.scripts.src}**/*.js`, gulp.series('scripts'));
-
 });
 
 
