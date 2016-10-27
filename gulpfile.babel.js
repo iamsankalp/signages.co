@@ -63,7 +63,7 @@ gulp.task('styles', () => {
 
   return gulp.src([
     `${config.styles.src}**/*.scss`,
-    '!**/_*/**' // Ignores Sass partials to `gulp.src` for best performance
+    '!**/_*/**' // Ignores Sass partials to `gulp.src` for better performance
   ])
   .pipe( plumber() )
   .pipe( sourcemaps.init() )
@@ -116,3 +116,22 @@ gulp.task('svg', function () {
     .pipe( rename({extname: '.njk'}) )
     .pipe( gulp.dest(config.svg.dist) )
 });
+
+
+gulp.task('watch', function() {
+
+  gulp.watch(`${config.svg.src}**/*`, gulp.series('svg'));
+  gulp.watch(`${config.images.src}**/*`, gulp.series('images'));
+  gulp.watch(`${config.styles.src}**/*.scss`, gulp.series('styles'));
+  gulp.watch(`${config.scripts.src}**/*.js`, gulp.series('scripts'));
+
+});
+
+
+gulp.task('compile',
+  gulp.parallel('svg', 'styles', 'scripts', 'images')
+);
+
+gulp.task('go',
+  gulp.parallel('compile', 'watch')
+);
