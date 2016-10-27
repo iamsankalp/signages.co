@@ -3,6 +3,11 @@
   padding: 2em;
   overflow: hidden;
 
+  h1 a {
+  	text-decoration: none;
+  	color: inherit;
+  }
+
   small {
     display: block;
     font-size: .8rem;

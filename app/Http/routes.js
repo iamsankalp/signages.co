@@ -17,7 +17,9 @@
 
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.on('/').render('home')
+
+Route.on('/submit').render('submit')
 
 // Authentication Routes
 Route.get('/login', 'AuthController.showLogin')
