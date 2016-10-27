@@ -3,6 +3,7 @@
 import gulp from 'gulp';
 
 // Utils -------------------------------
+import gutil from 'gulp-util';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber from 'gulp-plumber';
 import newer from 'gulp-newer';
@@ -123,6 +124,25 @@ gulp.task('watch', function() {
   gulp.watch(`${config.images.src}**/*`, gulp.series('images'));
   gulp.watch(`${config.styles.src}**/*.scss`, gulp.series('styles'));
   gulp.watch(`${config.scripts.src}**/*.js`, gulp.series('scripts'));
+});
+
+
+gulp.task('default', function(done) {
+  var help = `
+    ${gutil.colors.yellow('Usage:')}
+      gulp [command]
+    
+    ${gutil.colors.yellow('Available commands:')}
+      ${gutil.colors.green('gulp')}             Display this help message.
+      ${gutil.colors.green('gulp dev')}         Compile files in dev mode and watches for changes.
+      ${gutil.colors.green('gulp prod')}        Compiles files for productions. Runs optimization asks.
+      ${gutil.colors.green('gulp deploy')}      Deploys files to production.
+  `;
+  done();
+  return setTimeout((function() {
+    return console.log(help);
+  }), 200);
+
 });
 
 
