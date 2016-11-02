@@ -30,7 +30,7 @@ Route.post('/register', 'AuthController.doSignup')
 
 
 
-Route.group('auth-routes', () => {
+Route.group('GauredRoutes', () => {
 
 	Route.get('/logout', 'AuthController.doLogout')
 
