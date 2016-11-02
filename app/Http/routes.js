@@ -38,7 +38,9 @@ Route.group('GauredRoutes', () => {
 	Route.get('/backdoor', 'PagesController.backdoor')
 
 	Route.get('/backdoor/signages', 'SignagesController.show')
-	Route.get('/backdoor/signages/add', 'SignagesController.create')
+
+	Route.get('/backdoor/signages/add', 'SignagesController.showCreate')
+	Route.post('/backdoor/signages/add', 'SignagesController.doCreate')
 
 }).middleware('guard')
 

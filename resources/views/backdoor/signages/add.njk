@@ -19,11 +19,20 @@
     <div class="col-sm-6 push-sm-3">
 
 
-<form>
+    {% if old('errors') %}
+      {% for error in old('errors') %} 
+        <div class="alert alert-danger mb-2" role="alert">
+          <small><strong>{{ error.field }} - </strong> {{ error.message }}</small>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+
+<form class="mb-2" method="POST" action="" enctype="multipart/form-data">
 
   <div class="form-group">
     <label for="title">Title</label>
-    <input type="email" name="title" class="form-control" id="title" placeholder="Enter email">
+    <input type="text" name="title" class="form-control" id="title" placeholder="Enter title">
   </div>
 
   <div class="form-group">
@@ -33,23 +42,23 @@
 
   <div class="form-group">
     <label for="creator">Created By</label>
-    <input type="email" name="creator" class="form-control" id="creator" placeholder="Enter email">
+    <input type="text" name="creator" class="form-control" id="creator" placeholder="Enter email">
   </div>
 
   <div class="form-group">
     <label for="language">Language</label>
     <select class="form-control" id="language" name="language">
-      <option>English</option>
-      <option>Hindi</option>
-      <option>Gujrati</option>
-      <option>Marathi</option>
-      <option>Bengali</option>
+      <option value="en">English</option>
+      <option value="hi">Hindi</option>
+      <option value="gu">Gujrati</option>
+      <option value="mr">Marathi</option>
+      <option value="be">Bengali</option>
     </select>
   </div>
 
   <div class="form-group">
     <label for="thumbnail">Attach Thumbnail</label>
-    <input type="file" class="form-control-file" id="thumbnail" id="thumbnail">
+    <input type="file" class="form-control-file" name="thumbnail" id="thumbnail">
     <small class="form-text text-muted">Preferably JPG</small>
   </div>
 
@@ -59,7 +68,7 @@
     <small class="form-text text-muted">A4 Size</small>
   </div>
 
-  
+  {{ csrfField }}  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
