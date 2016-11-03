@@ -147,13 +147,10 @@ class SignagesController {
       allowedExtensions: ['pdf']
 		})
 
-	 const thumbExists = (thumb.size > 0) ? true : false;
-	 const pdfExists = (pdf.size > 0) ? true : false;
+	 let thumbImgPath = null;
+	 let pdfFilePath = null;
 
-	 const thumbImgPath = null;
-	 const pdfFilePath = null;
-
-	 if (thumbExists) {
+	 if ( thumb.clientSize() > 0 ) {
 			const thumbName = `${new Date().getTime()}.${thumb.extension()}`
 			const thumbPath = `/images/thumbs/${thumbName}`;
 			thumbImgPath = thumbPath;
@@ -167,12 +164,12 @@ class SignagesController {
 			}
 	 }
 
-	 if (pdfExists) {
+	 if ( pdf.clientSize() > 0 ) {
 			const pdfName = `${new Date().getTime()}.${pdf.extension()}`
 			const pdfPath = Helpers.storagePath('signages') + '/' + pdfName;
 			pdfFilePath = pdfPath;
 			yield pdf.move(Helpers.storagePath('signages'), pdfName);
-			if (!pdf.moved() ) {
+			if ( !pdf.moved() ) {
 				yield request
 			  .withAll() 
 			  .andWith({errors: [{"field":"pdf","validation":"match","message":pdf.errors()}]})
