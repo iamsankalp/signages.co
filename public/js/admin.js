@@ -63,6 +63,12 @@
 	window.jQuery = _jquery2.default;
 	
 	console.log('Admin.js');
+	
+	(0, _jquery2.default)('.js-delete-signage').on('click', function (event) {
+		event.preventDefault();
+		(0, _jquery2.default)('#deleteSignageForm').attr('action', (0, _jquery2.default)(this).data('delete-link'));
+		(0, _jquery2.default)('#deleteSignageModal').modal();
+	});
 
 /***/ },
 /* 2 */

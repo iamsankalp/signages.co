@@ -17,7 +17,7 @@
 
 const Route = use('Route')
 
-Route.on('/').render('home')
+Route.get('/', 'PagesController.home')
 
 Route.on('/submit').render('submit')
 
@@ -41,6 +41,11 @@ Route.group('GauredRoutes', () => {
 
 	Route.get('/backdoor/signages/add', 'SignagesController.showCreate')
 	Route.post('/backdoor/signages/add', 'SignagesController.doCreate')
+
+	Route.get('/backdoor/signages/:id/edit', 'SignagesController.showEdit').as('signage.showEdit')
+	Route.post('/backdoor/signages/:id/edit', 'SignagesController.doEdit').as('signage.doEdit')
+
+	Route.post('/backdoor/signages/:id/delete', 'SignagesController.doDelete').as('signage.doDelete')
 
 }).middleware('guard')
 

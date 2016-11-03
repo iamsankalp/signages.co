@@ -10,6 +10,28 @@
 		<li><button class="btn" data-group="gu">Gujrati</button></li>
 	</ul>
     <ul class="signages-list" id="grid">
+
+
+    {% for signage in signages %}
+      <li>
+        <article class="listing" data-lang="{{signage.language}}">
+          <figure class="listing-image">
+            <img src="{{signage.thumb_url}}" alt="{{signage.title}}" />
+          </figure>
+          <figcaption class="listing-details">
+            <h1 class="listing-title">
+              {{signage.title}}
+            </h1>
+            <h2 class="listing-desc">
+              {{signage.description}}
+            </h2>
+            <a class="listing-download" target="_blank" href="{{signage.pdf_url}}">Download</a>
+          </figcaption>
+        </article>
+      </li>
+    {% endfor %}
+
+
       <li>
         <article class="listing eng" data-lang="en">
           <figure class="listing-image">
