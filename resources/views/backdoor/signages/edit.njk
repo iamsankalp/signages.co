@@ -1,0 +1,88 @@
+{% extends 'layouts.master' %}
+
+{% block content %}
+
+
+<div class="container mb-1">
+  <div class="row">
+
+    <div class="col-sm-6 push-sm-3 clearfix">
+			<h2 class="mb-2 float-xs-left">Edit Signage</h2>
+		</div>
+
+  </div>
+</div>
+
+<div class="container mb-3">
+  <div class="row">
+
+    <div class="col-sm-6 push-sm-3">
+
+
+    {% if old('errors') %}
+      {% for error in old('errors') %} 
+        <div class="alert alert-danger mb-2" role="alert">
+          <small><strong>{{ error.field }} - </strong> {{ error.message }}</small>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+
+<form class="mb-2" method="POST" action="" enctype="multipart/form-data">
+
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" name="title" class="form-control" id="title" placeholder="Enter title" value="{{signage.title}}">
+  </div>
+
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" name="description" id="description" rows="3" placeholder="Enter description">{{signage.description}}</textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="creator">Created By</label>
+    <input type="text" name="creator" class="form-control" id="creator" placeholder="Enter Name" value="{{signage.creator}}">
+  </div>
+
+  <div class="form-group">
+    <label for="language">Language</label>
+    <select class="form-control" id="language" name="language">
+      <option value="en" {{ "selected" if signage.language == 'en' }}>English</option>
+      <option value="hi" {{ "selected" if signage.language == 'hi' }}>Hindi</option>
+      <option value="gu" {{ "selected" if signage.language == 'gu' }}>Gujrati</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="thumbnail">Attach Thumbnail</label>
+    <input type="file" class="form-control-file" name="thumbnail" id="thumbnail">
+    <small class="form-text text-muted">
+      <a href="{{signage.thumb_url}}" target="_blank">Thumbnail</a>
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label for="pdf">Attach PDF</label>
+    <input type="file" class="form-control-file" name="pdf" id="pdf">
+    <small class="form-text text-muted">
+      <a href="{{signage.pdf_url}}" target="_blank">PDF</a>
+    </small>
+  </div>
+
+  {{ csrfField }}  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+
+
+
+
+		</div>
+
+  </div>
+</div>
+
+
+{% endblock %}
