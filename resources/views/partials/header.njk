@@ -10,15 +10,20 @@
         </svg>
       </a>
 
-      <a href="/request" class="header-link pull-right">
-				Request
-      </a>
 
-      <a href="/submit" class="header-link pull-right">
-				Submit
-      </a>
+      {% if currentUser %}
+        <a href="/request" class="header-link pull-right">
+          Request
+        </a>
 
-      <a href="/backdoor" class="header-link pull-right">
-				Backdoor
-      </a>
+        <a href="/submit" class="header-link pull-right">
+          Submit
+        </a>
+
+        <a href="/backdoor/signages" class="header-link pull-right">
+          Admin
+        </a>
+      {% endif %}
+
+
   </header>
