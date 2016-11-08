@@ -25,7 +25,7 @@ module.exports = {
     enable: true,
     methods: ['POST', 'PUT', 'DELETE'],
     filterUris: [],
-    compareHostAndOrigin: false
+    compareHostAndOrigin: true
   }
 
 }
